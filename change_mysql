@@ -1,0 +1,11 @@
+systemctl stop mariadb.service
+mysqld_safe --skip-grant-tables --skip-networking &
+mysql -u root
+FLUSH PRIVILEGES;
+GRANT USAGE ON *.* TO 'user'@'127.0.0.1' IDENTIFIED BY 'pass';
+GRANT USAGE ON *.* TO 'user'@'localhost' IDENTIFIED BY 'pass';
+FLUSH PRIVILEGES;
+pkill mysql
+ps aux|grep mar
+systemctl start mariadb.service
+mysql -uuser -ppass -e"status"
