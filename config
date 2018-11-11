@@ -1,0 +1,21 @@
+Host *
+#GSSAPIAuthentication no
+#GSSAPIDelegateCredentials yes
+ControlMaster auto
+ControlPersist 5m
+ControlPath=/tmp/%h
+ForwardAgent yes
+Compression yes
+User user
+IdentityFile ~/.ssh/id_rsa
+RemoteForward 52698 localhost:52698
+#forwardable = true
+
+Host example
+HostName 10.10.10.10
+#User root
+
+#Host beta
+#HostName 192.168.1.17
+#User v.pupkin
+#ProxyCommand ssh alpha nc %h %p
